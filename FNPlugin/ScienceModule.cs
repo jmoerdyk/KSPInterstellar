@@ -50,7 +50,7 @@ namespace FNPlugin {
         protected double science_awaiting_addition = 0;
         protected Animation anim;
         protected Animation anim2;
-        protected FuelReprocessor reprocessor;
+        protected NuclearFuelReprocessor reprocessor;
         protected AntimatterFactory anti_factory;
 
         public bool CanProvideTelescopeControl
@@ -141,7 +141,7 @@ namespace FNPlugin {
 
         public override void OnStart(PartModule.StartState state) {
             if (state == StartState.Editor) { return; }
-            reprocessor = new FuelReprocessor(part);
+            reprocessor = new NuclearFuelReprocessor(part);
             anti_factory = new AntimatterFactory(part);
             ConfigNode config = PluginHelper.getPluginSaveFile();
 
@@ -196,7 +196,7 @@ namespace FNPlugin {
                     double now = Planetarium.GetUniversalTime();
                     double time_diff = now - last_active_time;
 
-                    List<PartResource> antimatter_resources = part.GetConnectedResources("Antimatter").ToList();
+                    List<PartResource> antimatter_resources = part.GetConnectedResources(InterstellarResourcesConfiguration.Instance.Antimatter).ToList();
                     float currentAntimatter_missing = 0;
                     foreach (PartResource partresource in antimatter_resources) {
                         currentAntimatter_missing += (float)(partresource.maxAmount - partresource.amount);
@@ -333,7 +333,7 @@ namespace FNPlugin {
                     double electrical_power_provided = consumeFNResource(GameConstants.basePowerConsumption * TimeWarp.fixedDeltaTime, FNResourceManager.FNRESOURCE_MEGAJOULES);
                     electrical_power_ratio = (float)(electrical_power_provided / TimeWarp.fixedDeltaTime / GameConstants.basePowerConsumption);
                     global_rate_multipliers = global_rate_multipliers * electrical_power_ratio;
-                    reprocessor.performReprocessingFrame(global_rate_multipliers);
+                    reprocessor.UpdateFrame(global_rate_multipliers);
                     if (reprocessor.getActinidesRemovedPerHour() > 0) {
                         reprocessing_rate_f = (float)(reprocessor.getRemainingAmountToReprocess() / reprocessor.getActinidesRemovedPerHour());
                     } else {
@@ -353,7 +353,7 @@ namespace FNPlugin {
                         electrical_power_ratio = (float)(electrical_power_provided / TimeWarp.fixedDeltaTime / GameConstants.baseCentriPowerConsumption);
                         global_rate_multipliers = global_rate_multipliers * electrical_power_ratio;
                         float deut_produced = (float)(global_rate_multipliers * GameConstants.deuterium_timescale * GameConstants.deuterium_abudance * 1000.0f);
-                        deut_rate_f = -ORSHelper.fixedRequestResource(part, "Deuterium", -deut_produced * TimeWarp.fixedDeltaTime) / TimeWarp.fixedDeltaTime;
+                        deut_rate_f = -ORSHelper.fixedRequestResource(part, InterstellarResourcesConfiguration.Instance.Deuterium, -deut_produced * TimeWarp.fixedDeltaTime) / TimeWarp.fixedDeltaTime;
                     } else {
                         ScreenMessages.PostScreenMessage("You must be splashed down to perform this activity.", 5.0f, ScreenMessageStyle.UPPER_CENTER);
                         IsEnabled = false;
