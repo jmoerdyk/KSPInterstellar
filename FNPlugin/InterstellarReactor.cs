@@ -310,7 +310,7 @@ namespace FNPlugin {
                     double tritium_rate = thermal_power_received / TimeWarp.fixedDeltaTime / 1000.0f / GameConstants.tritiumBreedRate;
                     double lith_rate = tritium_rate * TimeWarp.fixedDeltaTime;
                     double lith_used = ORSHelper.fixedRequestResource(part, "Lithium", lith_rate);
-                    tritium_produced_f = (float)(-ORSHelper.fixedRequestResource(part, "Tritium", -lith_used) / TimeWarp.fixedDeltaTime);
+                    tritium_produced_f = (float)(-ORSHelper.fixedRequestResource(part, "LqdTritium", -lith_used) / TimeWarp.fixedDeltaTime);
                     if (tritium_produced_f <= 0) breedtritium = false;
                 }
 

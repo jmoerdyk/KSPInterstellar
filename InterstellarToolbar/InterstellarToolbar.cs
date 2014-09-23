@@ -22,14 +22,16 @@ namespace InterstellarToolbar {
             button_mega = ToolbarManager.Instance.add("interstellar", "mega_button");
             button_mega.TexturePath = "WarpPlugin/megajoule_click2";
             button_mega.ToolTip = "Show Megajoule Power Manager";
+            button_mega.Visibility = new GameScenesVisibility(GameScenes.FLIGHT);
             
             button_mega.OnClick += (e) => {
-                FlightUIStarter.show_window = true;
+                FlightUIStarter.show_window = !FlightUIStarter.show_window; //true;
             };
 
             button_thermal = ToolbarManager.Instance.add("interstellar", "thermal_button");
             button_thermal.TexturePath = "WarpPlugin/thermal_click";
             button_thermal.ToolTip = "Toggle VAB Thermal Helper";
+            button_thermal.Visibility = new GameScenesVisibility(GameScenes.EDITOR, GameScenes.SPH);
 
             button_thermal.OnClick += (e) => {
                 if (HighLogic.LoadedSceneIsEditor) {

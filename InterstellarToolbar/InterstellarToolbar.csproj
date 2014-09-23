@@ -23,38 +23,36 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
+    <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\GameData\WarpPlugin\Plugins\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Assembly-CSharp, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Games\Kerbal Space Program 0.23\KSP_Data\Managed\Assembly-CSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="Interstellar">
-      <HintPath>C:\Games\Kerbal Space Program 0.24\GameData\WarpPlugin\Plugins\Interstellar.dll</HintPath>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\..\..\KSP_Dev\KSP_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="OpenResourceSystem_1_4_1">
-      <HintPath>C:\Games\Kerbal Space Program 0.24\GameData\OpenResourceSystem\Plugins\OpenResourceSystem_1_4_1.dll</HintPath>
+      <HintPath>..\GameData\OpenResourceSystem\Plugins\OpenResourceSystem_1_4_1.dll</HintPath>
       <Aliases>ORSv1_4_1</Aliases>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
     <Reference Include="Toolbar">
-      <HintPath>C:\Games\Kerbal Space Program 0.23\GameData\000_Toolbar\Toolbar.dll</HintPath>
+      <HintPath>..\..\..\Reference\Toolbar.dll</HintPath>
+      <Private>False</Private>
     </Reference>
-    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\..\KSP_Dev\KSP_Data\Managed\UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="WarpPlugin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Games\Kerbal Space Program 0.23\KSP_Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath>..\GameData\WarpPlugin\Plugins\WarpPlugin.dll</HintPath>
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
