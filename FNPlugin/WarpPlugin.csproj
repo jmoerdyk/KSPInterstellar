@@ -37,10 +37,11 @@
       <HintPath>..\..\..\KSP_Dev\KSP_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="OpenResourceSystem_1_4_1">
-      <HintPath>..\GameData\OpenResourceSystem\Plugins\OpenResourceSystem_1_4_1.dll</HintPath>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="OpenResourceSystem_1_4_2">
+      <HintPath>..\GameData\OpenResourceSystem\Plugins\OpenResourceSystem_1_4_2.dll</HintPath>
       <Private>False</Private>
-      <Aliases>global,ORSv1_4_1</Aliases>
+      <Aliases>ORSv1_4_2</Aliases>
     </Reference>
     <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
